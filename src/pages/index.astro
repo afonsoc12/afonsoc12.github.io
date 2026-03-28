@@ -1,0 +1,135 @@
+---
+import Base from '../layouts/Base.astro';
+import Sidebar from '../components/Sidebar.astro';
+import TerminalHero from '../components/TerminalHero.astro';
+import About from '../components/About.astro';
+import Experience from '../components/Experience.astro';
+import Projects from '../components/Projects.astro';
+import Contact from '../components/Contact.astro';
+---
+
+<Base title="Afonso Costa" description="Afonso Costa's personal website">
+  <!-- Fixed left sidebar (hidden on mobile, shown lg+) -->
+  <Sidebar />
+
+  <!-- Right scrollable panel: lg:ml-72 offsets past the sidebar width -->
+  <main class="lg:ml-72 h-screen overflow-y-auto lg:snap-y lg:snap-mandatory">
+
+    <!-- Mobile header — only visible below lg -->
+    <header class="lg:hidden sticky top-0 z-50 bg-slate-950/95 backdrop-blur-sm border-b border-slate-800/90">
+      <div class="px-6 py-4 flex items-center">
+        <!-- Hamburger button (left side) -->
+        <button
+          id="mobile-menu-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          class="text-slate-400 hover:text-white transition-colors p-1 -ml-1 mr-3"
+        >
+          <svg id="hamburger-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="close-icon" xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <span class="font-semibold text-white text-sm">Afonso Costa</span>
+      </div>
+      <!-- Collapsible panel — mirrors sidebar content -->
+      <div id="mobile-nav" class="hidden border-t border-slate-800/90 px-6 py-5">
+        <!-- Profile -->
+        <div class="flex items-center gap-4 mb-4">
+          <div class="w-14 h-14 rounded-full bg-slate-800 border-2 border-cyan-800/50 overflow-hidden flex-shrink-0">
+            <div class="w-full h-full bg-gradient-to-br from-cyan-900/70 to-slate-800 flex items-center justify-center text-lg font-bold text-cyan-200">
+              AC
+            </div>
+          </div>
+          <div>
+            <p class="text-white font-semibold text-sm">Afonso Costa</p>
+            <p class="text-cyan-300 text-xs">Senior Data Platform Engineer</p>
+          </div>
+        </div>
+        <!-- Social links -->
+        <div class="flex gap-5 mb-5">
+          <a href="https://github.com/afonsoc12" target="_blank" rel="noopener noreferrer"
+             class="text-slate-400 hover:text-cyan-300 transition-colors text-xs font-medium flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+            </svg>
+            GitHub
+          </a>
+          <a href="https://linkedin.com/in/afonsoc12" target="_blank" rel="noopener noreferrer"
+             class="text-slate-400 hover:text-cyan-300 transition-colors text-xs font-medium flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+              <rect x="2" y="9" width="4" height="12"/>
+              <circle cx="4" cy="4" r="2"/>
+            </svg>
+            LinkedIn
+          </a>
+        </div>
+        <!-- Section nav -->
+        <nav class="flex flex-col gap-1 border-t border-slate-800/90 pt-4">
+          <a href="#hero" class="mobile-nav-link text-sm text-slate-400 hover:text-white hover:bg-slate-800/80 px-3 py-2 rounded-md transition-colors">Home</a>
+          <a href="#about" class="mobile-nav-link text-sm text-slate-400 hover:text-white hover:bg-slate-800/80 px-3 py-2 rounded-md transition-colors">About</a>
+          <a href="#experience" class="mobile-nav-link text-sm text-slate-400 hover:text-white hover:bg-slate-800/80 px-3 py-2 rounded-md transition-colors">Experience</a>
+          <a href="#projects" class="mobile-nav-link text-sm text-slate-400 hover:text-white hover:bg-slate-800/80 px-3 py-2 rounded-md transition-colors">Projects</a>
+          <a href="#contact" class="mobile-nav-link text-sm text-slate-400 hover:text-white hover:bg-slate-800/80 px-3 py-2 rounded-md transition-colors">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <script>
+      const toggle = document.getElementById('mobile-menu-toggle');
+      const nav = document.getElementById('mobile-nav');
+      const hamburgerIcon = document.getElementById('hamburger-icon');
+      const closeIcon = document.getElementById('close-icon');
+
+      toggle?.addEventListener('click', () => {
+        const isOpen = !nav?.classList.contains('hidden');
+        if (isOpen) {
+          nav?.classList.add('hidden');
+          hamburgerIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+          toggle.setAttribute('aria-expanded', 'false');
+        } else {
+          nav?.classList.remove('hidden');
+          hamburgerIcon?.classList.add('hidden');
+          closeIcon?.classList.remove('hidden');
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      // Close nav when a link is clicked (anchor navigation)
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+          nav?.classList.add('hidden');
+          hamburgerIcon?.classList.remove('hidden');
+          closeIcon?.classList.add('hidden');
+          toggle?.setAttribute('aria-expanded', 'false');
+        });
+      });
+    </script>
+
+    <TerminalHero />
+
+    <About />
+    <Experience />
+    <Projects />
+    <Contact />
+
+    <footer class="border-t border-slate-800/90 py-8 px-6 text-center text-sm text-slate-400">
+      Made with 🤖 by <a href="https://linkedin.com/in/afonsoc12" target="_blank" rel="noopener noreferrer" class="text-cyan-300 hover:text-cyan-200 transition-colors">me</a>
+    </footer>
+
+  </main>
+
+  <!-- Mobile nav: shown only below lg, stacked above content -->
+  <!-- Sidebar component uses hidden lg:flex — on mobile, provide a simple top bar -->
+  <style>
+    @media (max-width: 1023px) {
+      main {
+        margin-left: 0;
+      }
+    }
+  </style>
+</Base>

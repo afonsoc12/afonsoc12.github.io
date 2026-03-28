@@ -1,0 +1,208 @@
+---
+import packageJson from '../../package.json';
+import profileImage from '../assets/images/profile.png';
+
+const version = packageJson.version;
+---
+
+<aside class="fixed top-0 left-0 h-screen w-72 bg-slate-950/90 border-r border-slate-800/90 flex flex-col px-8 py-10 overflow-y-auto z-40 hidden lg:flex backdrop-blur-sm">
+
+  <!-- Round photo placeholder -->
+  <div class="w-20 h-20 rounded-full bg-slate-800 border-2 border-cyan-800/50 mb-6 overflow-hidden flex-shrink-0">
+    <a href="/" aria-label="Go to homepage" class="block w-full h-full">
+      <img
+        src={profileImage.src}
+        alt="Afonso Costa"
+        class="w-full h-full object-cover"
+        loading="eager"
+        decoding="async"
+      />
+    </a>
+  </div>
+
+  <!-- Identity -->
+  <h1 class="text-white font-bold text-xl leading-tight mb-1">Afonso Costa</h1>
+  <p class="text-cyan-300 text-sm font-medium mb-4">Sr. Data Platform Engineer, MSc.</p>
+  <p class="text-slate-400 text-sm leading-relaxed mb-6">
+    Hey there! 👋<br/>I'm Afonso, a Data Engineer by day and an enthusiastic homelabber by night. I'm passionate for all-things Open-Source and Technology in general. I'm fueled by turning complex problems into reliable solutions.
+  </p>
+
+  <!-- Social links -->
+  <div class="flex gap-5 mb-10">
+    <a href="https://github.com/afonsoc12" target="_blank" rel="noopener noreferrer"
+       class="text-slate-400 hover:text-cyan-300 transition-colors text-sm font-medium flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+      </svg>
+      GitHub
+    </a>
+    <a href="https://linkedin.com/in/afonsoc12" target="_blank" rel="noopener noreferrer"
+       class="text-slate-400 hover:text-cyan-300 transition-colors text-sm font-medium flex items-center gap-2">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+        <rect x="2" y="9" width="4" height="12"/>
+        <circle cx="4" cy="4" r="2"/>
+      </svg>
+      LinkedIn
+    </a>
+  </div>
+
+  <!-- Section nav + timeline -->
+  <div id="sidebar-timeline" class="relative pl-6">
+    <div id="sidebar-progress-rail" aria-hidden="true" class="absolute w-px bg-slate-700/70"></div>
+    <div id="sidebar-progress-fill" aria-hidden="true" class="absolute w-px h-0 bg-gradient-to-b from-cyan-300 via-cyan-400 to-amber-300 transition-[height] duration-200"></div>
+
+    <nav class="flex flex-col gap-2">
+      <a href="#hero" data-section="hero"
+         class="sidebar-nav-link relative text-sm px-3.5 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/85 transition-all duration-200 border-l-2 border-transparent bg-slate-900/20 hover:translate-x-0.5 hover:shadow-[0_2px_8px_rgba(8,47,73,0.16)]">
+        <span class="sidebar-nav-dot absolute -left-[23px] top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full border border-slate-500 bg-slate-900 transition-all duration-200"></span>
+        Home
+      </a>
+      <a href="#about" data-section="about"
+         class="sidebar-nav-link relative text-sm px-3.5 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/85 transition-all duration-200 border-l-2 border-transparent bg-slate-900/20 hover:translate-x-0.5 hover:shadow-[0_2px_8px_rgba(8,47,73,0.16)]">
+        <span class="sidebar-nav-dot absolute -left-[23px] top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full border border-slate-500 bg-slate-900 transition-all duration-200"></span>
+        About
+      </a>
+      <a href="#experience" data-section="experience"
+         class="sidebar-nav-link relative text-sm px-3.5 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/85 transition-all duration-200 border-l-2 border-transparent bg-slate-900/20 hover:translate-x-0.5 hover:shadow-[0_2px_8px_rgba(8,47,73,0.16)]">
+        <span class="sidebar-nav-dot absolute -left-[23px] top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full border border-slate-500 bg-slate-900 transition-all duration-200"></span>
+        Experience
+      </a>
+      <a href="#projects" data-section="projects"
+         class="sidebar-nav-link relative text-sm px-3.5 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/85 transition-all duration-200 border-l-2 border-transparent bg-slate-900/20 hover:translate-x-0.5 hover:shadow-[0_2px_8px_rgba(8,47,73,0.16)]">
+        <span class="sidebar-nav-dot absolute -left-[23px] top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full border border-slate-500 bg-slate-900 transition-all duration-200"></span>
+        Projects
+      </a>
+      <a href="#contact" data-section="contact"
+         class="sidebar-nav-link relative text-sm px-3.5 py-2.5 rounded-lg text-slate-400 hover:text-slate-100 hover:bg-slate-800/85 transition-all duration-200 border-l-2 border-transparent bg-slate-900/20 hover:translate-x-0.5 hover:shadow-[0_2px_8px_rgba(8,47,73,0.16)]">
+        <span class="sidebar-nav-dot absolute -left-[23px] top-1/2 -translate-y-1/2 h-2.5 w-2.5 rounded-full border border-slate-500 bg-slate-900 transition-all duration-200"></span>
+        Contact
+      </a>
+    </nav>
+  </div>
+
+  <a
+    href="https://github.com/afonsoc12/afonsoc12.github.io"
+    target="_blank"
+    rel="noopener noreferrer"
+    class="mt-auto pt-8 text-[11px] text-slate-500 hover:text-cyan-300 transition-colors font-mono tracking-wide"
+    aria-label="Open repository"
+  >
+    v{version}
+  </a>
+
+</aside>
+
+<script>
+  const sections = ['hero', 'about', 'experience', 'projects', 'contact']
+    .map(id => document.getElementById(id))
+    .filter(Boolean);
+  const sectionIds = sections.map(section => section.id);
+
+  const navLinks = document.querySelectorAll('.sidebar-nav-link');
+  const timeline = document.getElementById('sidebar-timeline') as HTMLDivElement | null;
+  const progressRail = document.getElementById('sidebar-progress-rail') as HTMLDivElement | null;
+  const progressFill = document.getElementById('sidebar-progress-fill') as HTMLDivElement | null;
+
+  const activeClasses = ['text-white', 'bg-slate-800/90', 'border-cyan-300', 'shadow-[0_3px_10px_rgba(34,211,238,0.10)]'];
+  const inactiveText = 'text-slate-400';
+  const activeDotClasses = ['bg-cyan-300', 'border-cyan-200', 'scale-110', 'shadow-[0_0_10px_rgba(34,211,238,0.45)]'];
+  const inactiveDotClasses = ['bg-slate-900', 'border-slate-500'];
+
+  function setActive(id) {
+    const currentIndex = sectionIds.indexOf(id);
+
+    navLinks.forEach(link => {
+      const isActive = link.dataset.section === id;
+      if (isActive) {
+        activeClasses.forEach(cls => link.classList.add(cls));
+        link.classList.remove(inactiveText);
+      } else {
+        activeClasses.forEach(cls => link.classList.remove(cls));
+        link.classList.add(inactiveText);
+      }
+
+      const dot = link.querySelector('.sidebar-nav-dot');
+      if (!dot) return;
+      if (isActive) {
+        activeDotClasses.forEach(cls => dot.classList.add(cls));
+        inactiveDotClasses.forEach(cls => dot.classList.remove(cls));
+      } else {
+        activeDotClasses.forEach(cls => dot.classList.remove(cls));
+        inactiveDotClasses.forEach(cls => dot.classList.add(cls));
+      }
+    });
+
+  }
+
+  function updateProgress() {
+    if (!mainPanel || !progressFill || !progressRail) return;
+    const scrollRange = mainPanel.scrollHeight - mainPanel.clientHeight;
+    const ratio = scrollRange <= 0 ? 0 : Math.min(1, Math.max(0, mainPanel.scrollTop / scrollRange));
+    progressFill.style.height = `${ratio * progressRail.offsetHeight}px`;
+  }
+
+  function positionTimeline() {
+    if (!timeline || !progressRail || !progressFill) return;
+
+    const dots = Array.from(document.querySelectorAll('.sidebar-nav-dot')) as HTMLElement[];
+    if (dots.length < 2) return;
+
+    const timelineRect = timeline.getBoundingClientRect();
+    const firstDotRect = dots[0].getBoundingClientRect();
+    const lastDotRect = dots[dots.length - 1].getBoundingClientRect();
+
+    const centerX = firstDotRect.left + firstDotRect.width / 2 - timelineRect.left;
+    const startY = firstDotRect.top + firstDotRect.height / 2 - timelineRect.top;
+    const endY = lastDotRect.top + lastDotRect.height / 2 - timelineRect.top;
+    const railHeight = Math.max(0, endY - startY);
+
+    progressRail.style.left = `${centerX}px`;
+    progressRail.style.top = `${startY}px`;
+    progressRail.style.height = `${railHeight}px`;
+
+    progressFill.style.left = `${centerX}px`;
+    progressFill.style.top = `${startY}px`;
+  }
+
+  let isAtBottom = false;
+  const mainPanel = document.querySelector('main');
+
+  if (mainPanel) {
+    mainPanel.addEventListener('scroll', () => {
+      updateProgress();
+      isAtBottom = mainPanel.scrollTop + mainPanel.clientHeight >= mainPanel.scrollHeight - 10;
+      if (isAtBottom && sections.length > 0) {
+        setActive(sections[sections.length - 1].id);
+      }
+    });
+  }
+
+  window.addEventListener('resize', () => {
+    positionTimeline();
+    updateProgress();
+  });
+
+  const observer = new IntersectionObserver(
+    entries => {
+      if (isAtBottom) return;
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          setActive(entry.target.id);
+        }
+      });
+    },
+    {
+      root: mainPanel,
+      threshold: 0,
+      rootMargin: '-40% 0px -50% 0px',
+    }
+  );
+
+  sections.forEach(section => observer.observe(section));
+
+  // Set initial active state on page load
+  if (sections.length > 0) setActive(sections[0].id);
+  positionTimeline();
+  updateProgress();
+</script>

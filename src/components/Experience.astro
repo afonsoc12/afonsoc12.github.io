@@ -1,0 +1,115 @@
+---
+interface Role {
+  title: string;
+  company: string;
+  period: string;
+  summary?: string;
+  highlights: string[];
+  milestones?: { title: string; period: string }[];
+}
+
+const roles: Role[] = [
+  {
+    title: "Senior Data Platform Engineer",
+    company: "MoonPay",
+    period: "Jan 2026 — Present",
+    summary:
+      "Building and operating a modern Data Platform for a global crypto payments company.",
+    highlights: [],
+  },
+  {
+    title: "Senior Data Engineer",
+    company: "giffgaff",
+    period: "Jan 2022 — Jan 2026",
+    summary:
+      "Designed and delivered petabyte-scale data products on AWS, turning high-velocity Kafka and batch feeds into trusted Snowflake data products.",
+    milestones: [
+      { title: "Senior Data Engineer", period: "Oct 2024 — Jan 2026" },
+      { title: "Data Engineer", period: "Jan 2022 — Oct 2024" },
+    ],
+    highlights: [
+      "Designed and implemented scalable ingestion for high-velocity Kafka streams and batch feeds into Snowflake, ensuring GDPR and security compliance at scale.",
+      "Applied Data Vault 2.0 with dbt to model and transform datasets, enabling robust self-serve analytics for stakeholders.",
+      "Architected GDPR-compliant microservices for real-time stream processing with low-latency and fault-tolerant performance.",
+      "Orchestrated and monitored pipelines with Argo Workflows on Kubernetes to improve timeliness, reliability, and data integrity.",
+      "Developed automation frameworks, alerting systems, and CLI tooling to streamline developer workflows and operational efficiency.",
+    ],
+  },
+  {
+    title: "Clinical Database Manager",
+    company: "University of Bristol / UK Kidney Association",
+    period: "Jan 2021 — Jan 2022",
+    summary:
+      "Managed tranSMART, a data warehouse for clinical data, supporting secure, high-quality clinical research analytics.",
+    highlights: [
+      "Owned user management, server administration, security controls and backup routines.",
+      "Developed and maintained ETL pipelines for clinical data ingestion and curation.",
+      "Provided operational support to researchers to improve self-serve analytics usage.",
+      "Developed and maintained processes for missing data reporting, validation, and anonymization.",
+      "Helped enforce data quality and governance standards across research datasets.",
+    ],
+  },
+  {
+    title: "Researcher",
+    company: "University of Porto and Bosch Security Systems",
+    period: "Jul 2020 — Dec 2020",
+    summary: "Project Safe Cities: Building Urban Safety.",
+    highlights: [
+      "Researched anomaly detection in time-series data for urban safety applications.",
+    ],
+  },
+];
+---
+
+<section id="experience" class="section-shell fade-up snap-start snap-always lg:min-h-screen">
+  <p class="eyebrow">Career</p>
+  <h2 class="section-title">Experience</h2>
+  <p class="section-intro mb-10 max-w-none">
+    Roles focused on building reliable Data Platforms and helping teams ship with confidence.
+  </p>
+
+  <div class="relative">
+    <div class="absolute left-[-16px] top-2 bottom-2 w-px bg-slate-700/70"></div>
+    {
+      roles.map((role, index) => (
+        <article class="relative pb-8 last:pb-0">
+          <span class="absolute left-[-23px] top-2 block w-4 h-4 rounded-full border-2 border-cyan-300 bg-slate-950"></span>
+          <div class="glass-card p-5">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-1">
+              <span class="font-semibold text-white text-lg">{role.title}</span>
+              <span class="text-sm text-slate-400 whitespace-nowrap">{role.period}</span>
+            </div>
+            <p class="text-cyan-200 text-sm mb-3">{role.company}</p>
+            {role.summary && <p class="text-slate-200 text-sm leading-relaxed mb-3">{role.summary}</p>}
+            {role.milestones && (
+              <div class="mb-4 px-1 py-1">
+                <div class="relative pl-4">
+                  <div class="absolute left-0 top-2 bottom-2 w-px bg-slate-600/70"></div>
+                  <div class="space-y-3">
+                    {role.milestones.map((milestone) => (
+                      <div class="relative pl-4">
+                        <span class="absolute -left-[4px] top-1.5 block h-2 w-2 rounded-full bg-cyan-300"></span>
+                        <p class="text-sm text-slate-100">{milestone.title}</p>
+                        <p class="text-xs text-slate-400">{milestone.period}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            )}
+            {role.highlights.length > 0 && (
+              <ul class="text-sm text-slate-300 space-y-2">
+                {role.highlights.map((highlight) => (
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-300 mt-1">•</span>
+                    <span>{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </article>
+      ))
+    }
+  </div>
+</section>
