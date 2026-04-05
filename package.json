@@ -11,6 +11,7 @@
     "format:check": "prettier --check .",
     "check": "astro check",
     "ci:check": "npm run lint && npm run format:check && npm run check && npm run build",
+    "ci:fix": "npm run lint -- --fix && npm run format && npm run check",
     "astro": "astro"
   },
   "dependencies": {

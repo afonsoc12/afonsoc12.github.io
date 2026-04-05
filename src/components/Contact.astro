@@ -1,3 +1,7 @@
+---
+const formspreeId = "xnjolako";
+---
+
 <section
   id="contact"
   class="fade-up flex h-full snap-start flex-col overflow-y-auto"
@@ -9,60 +13,145 @@
       Always up for discussing engineering problems, open-source projects or
       all-things data!
     </p>
-    <div class="glass-card p-5">
-      <p class="mb-4 text-sm text-slate-300">
-        Reach out through any of the channels below.
-      </p>
-      <div class="flex flex-col items-start gap-4 sm:flex-row sm:gap-8">
-        <a
-          href="https://github.com/afonsoc12"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 font-medium text-cyan-300 transition-colors hover:text-cyan-200"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+
+    {
+      formspreeId && (
+        <div class="glass-card mb-6 p-5">
+          <div
+            id="fs-success"
+            class="mb-4 hidden border border-green-700/30 bg-green-900/10 px-4 py-3 font-mono text-sm text-green-400"
           >
-            <path
-              d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
-            ></path>
-          </svg>
-          GitHub
-        </a>
-        <a
-          href="https://linkedin.com/in/afonsoc12"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 font-medium text-cyan-300 transition-colors hover:text-cyan-200"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
+            <span class="mr-2 text-green-600">✓</span>Message sent! I'll get
+            back to you soon.
+          </div>
+          <div
+            id="fs-error"
+            class="mb-4 hidden border border-red-700/30 bg-red-900/10 px-4 py-3 font-mono text-sm text-red-400"
+          />
+
+          <form
+            id="contact-form"
+            data-endpoint={`https://formspree.io/f/${formspreeId}`}
+            class="flex flex-col gap-5"
           >
-            <path
-              d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
-            ></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
-          </svg>
-          LinkedIn
-        </a>
-      </div>
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="name"
+                class="font-mono text-[0.7rem] font-semibold tracking-widest text-cyan-400/70 uppercase"
+              >
+                <span class="mr-1 text-cyan-600">$</span>name
+              </label>
+              <input
+                id="name"
+                type="text"
+                name="name"
+                required
+                placeholder="Your name"
+                class="rounded-md border border-slate-700/60 bg-slate-900/40 px-3 py-1.5 font-mono text-sm text-slate-200 placeholder-slate-600 transition-colors outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/40"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="email"
+                class="font-mono text-[0.7rem] font-semibold tracking-widest text-cyan-400/70 uppercase"
+              >
+                <span class="mr-1 text-cyan-600">$</span>email
+              </label>
+              <input
+                id="email"
+                type="email"
+                name="email"
+                required
+                placeholder="you@example.com"
+                class="rounded-md border border-slate-700/60 bg-slate-900/40 px-3 py-1.5 font-mono text-sm text-slate-200 placeholder-slate-600 transition-colors outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/40"
+              />
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label
+                for="message"
+                class="font-mono text-[0.7rem] font-semibold tracking-widest text-cyan-400/70 uppercase"
+              >
+                <span class="mr-1 text-cyan-600">$</span>message
+              </label>
+              <textarea
+                id="message"
+                name="message"
+                required
+                rows="4"
+                placeholder="What's on your mind?"
+                class="resize-none rounded-md border border-slate-700/60 bg-slate-900/40 px-3 py-2 font-mono text-sm text-slate-200 placeholder-slate-600 transition-colors outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500/40"
+              />
+            </div>
+
+            <button
+              id="fs-submit"
+              type="submit"
+              class="self-start rounded-md border border-cyan-700/60 bg-cyan-900/20 px-5 py-2 font-mono text-sm font-medium text-cyan-300 transition-colors hover:border-cyan-500 hover:bg-cyan-900/40 hover:text-cyan-200 focus:ring-1 focus:ring-cyan-500 focus:ring-offset-1 focus:ring-offset-slate-900 focus:outline-none disabled:cursor-not-allowed disabled:opacity-40"
+            >
+              <span class="mr-2 text-cyan-600">&gt;</span>send_message()
+            </button>
+          </form>
+        </div>
+      )
+    }
+
+    <div class="mb-6 flex items-center gap-3">
+      <div class="h-px flex-1 bg-slate-800"></div>
+      <span class="font-mono text-xs text-slate-500">or reach out to me</span>
+      <div class="h-px flex-1 bg-slate-800"></div>
+    </div>
+
+    <div class="flex justify-center gap-4">
+      <a
+        href="https://github.com/afonsoc12"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 rounded-full border border-cyan-800/70 bg-cyan-950/60 px-5 py-2.5 font-mono text-sm font-medium text-cyan-300 transition-colors hover:border-cyan-600 hover:bg-cyan-900/60 hover:text-cyan-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"
+          ></path>
+        </svg>
+        GitHub
+      </a>
+      <a
+        href="https://linkedin.com/in/afonsoc12"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-center gap-2 rounded-full border border-cyan-800/70 bg-cyan-950/60 px-5 py-2.5 font-mono text-sm font-medium text-cyan-300 transition-colors hover:border-cyan-600 hover:bg-cyan-900/60 hover:text-cyan-200"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+          ></path>
+          <rect x="2" y="9" width="4" height="12"></rect>
+          <circle cx="4" cy="4" r="2"></circle>
+        </svg>
+        LinkedIn
+      </a>
     </div>
   </div>
   <footer
@@ -76,3 +165,54 @@
     >
   </footer>
 </section>
+
+<script>
+  const form = document.getElementById(
+    "contact-form",
+  ) as HTMLFormElement | null;
+  const submitBtn = document.getElementById(
+    "fs-submit",
+  ) as HTMLButtonElement | null;
+  const successEl = document.getElementById("fs-success");
+  const errorEl = document.getElementById("fs-error");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!submitBtn || !successEl || !errorEl) return;
+
+    submitBtn.disabled = true;
+    submitBtn.textContent = "> sending...";
+    successEl.classList.add("hidden");
+    errorEl.classList.add("hidden");
+
+    const endpoint = (form as HTMLFormElement & { dataset: DOMStringMap })
+      .dataset.endpoint!;
+
+    try {
+      const res = await fetch(endpoint, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (res.ok) {
+        successEl.classList.remove("hidden");
+        (form as HTMLFormElement).reset();
+        submitBtn.textContent = "> send_message()";
+      } else {
+        const body = await res.json().catch(() => ({}));
+        errorEl.textContent =
+          (body as { error?: string }).error ??
+          "Something went wrong. Please try again.";
+        errorEl.classList.remove("hidden");
+        submitBtn.textContent = "> send_message()";
+      }
+    } catch {
+      errorEl.textContent = "Network error. Please try again.";
+      errorEl.classList.remove("hidden");
+      submitBtn.textContent = "> send_message()";
+    }
+
+    submitBtn.disabled = false;
+  });
+</script>
