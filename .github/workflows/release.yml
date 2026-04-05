@@ -18,23 +18,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    if: github.event_name == 'workflow_dispatch' || github.event.base_ref == 'refs/heads/master'
     outputs:
       version: ${{ steps.version.outputs.VERSION }}
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-        with:
-          fetch-depth: 0
-
-      - name: Ensure tag is on default branch
-        run: |
-          DEFAULT_BRANCH='${{ github.event.repository.default_branch }}'
-          git fetch origin "$DEFAULT_BRANCH"
-          COMMIT_SHA=$(git rev-list -n 1 "$GITHUB_REF")
-          if ! git merge-base --is-ancestor "$COMMIT_SHA" "origin/$DEFAULT_BRANCH"; then
-            echo "Tag does not point to a commit on $DEFAULT_BRANCH. Aborting."
-            exit 1
-          fi
 
       - name: Extract version from tag
         id: version
@@ -89,8 +78,7 @@ jobs:
         uses: actions/deploy-pages@v5
 
   publish:
-    needs:
-      - build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: Download release archive
