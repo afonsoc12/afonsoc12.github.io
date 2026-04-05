@@ -3,6 +3,12 @@ import packageJson from "../../package.json";
 import profileImage from "../assets/images/profile.png";
 
 const version = packageJson.version;
+const commitSha = __COMMIT_SHA__;
+const versionLabel = import.meta.env.DEV
+  ? `v${version}+dev`
+  : commitSha !== "unknown"
+    ? `v${version}+${commitSha}`
+    : `v${version}`;
 ---
 
 <aside
@@ -163,7 +169,7 @@ const version = packageJson.version;
     class="mt-auto pt-8 font-mono text-[11px] tracking-wide text-slate-500 transition-colors hover:text-cyan-300"
     aria-label="Open release"
   >
-    v{version}
+    {versionLabel}
   </a>
 </aside>
 

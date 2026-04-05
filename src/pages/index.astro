@@ -10,6 +10,12 @@ import packageJson from "../../package.json";
 import profileImage from "../assets/images/profile.png";
 
 const version = packageJson.version;
+const commitSha = __COMMIT_SHA__;
+const versionLabel = import.meta.env.DEV
+  ? `v${version}+dev`
+  : commitSha !== "unknown"
+    ? `v${version}+${commitSha}`
+    : `v${version}`;
 ---
 
 <Base title="Afonso Costa" description="Afonso Costa's Personal Website">
@@ -170,7 +176,7 @@ const version = packageJson.version;
           rel="noopener noreferrer"
           class="mt-4 font-mono text-[11px] tracking-wide text-slate-500 transition-colors hover:text-cyan-300"
         >
-          v{version}
+          {versionLabel}
         </a>
       </div>
     </header>

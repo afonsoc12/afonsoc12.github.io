@@ -20,6 +20,7 @@ export default [
       globals: {
         ...globals.browser,
         ...globals.node,
+        __COMMIT_SHA__: "readonly",
       },
     },
   },

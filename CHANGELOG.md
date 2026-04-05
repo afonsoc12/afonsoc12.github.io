@@ -5,7 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
-## [Unreleased]
+## [0.0.5] - 2026-04-05
+
+### Changed
+
+- Increased terminal size in desktop
+- Added Short commit SHA to version
 
 ### Fixed
 
