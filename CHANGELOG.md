@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [Unreleased]
+
+### Fixed
+
+- Fixed iOS zooming in terminal due to font-size less than 16px
+
 ## [0.0.4] - 2026-04-05
 
 ### Added

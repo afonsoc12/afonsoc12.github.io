@@ -26,3 +26,10 @@ This repository is a personal site built with Astro + Tailwind.
 - `npm run build` - build production site
 - `npm run preview` - preview production build
 - `npm run ci:check` - Runs linting and formatting checks
+- `npm run ci:fix` - Auto-fixes lint and formatting issues
+
+## Changelog
+
+- Always add entries under `## [Unreleased]` in `CHANGELOG.md`
+- Follow [Keep a Changelog](https://keepachangelog.com) spec: use `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security` subsections
+- Never write directly to a versioned section; releases auto-promote Unreleased
