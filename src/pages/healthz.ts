@@ -9,7 +9,10 @@ export const GET: APIRoute = () => {
     }),
     {
       status: 200,
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        "Content-Disposition": "inline",
+      },
     },
   );
 };
