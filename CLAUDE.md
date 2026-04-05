@@ -25,3 +25,4 @@ This repository is a personal site built with Astro + Tailwind.
 - `npm run dev` - start local dev server
 - `npm run build` - build production site
 - `npm run preview` - preview production build
+- `npm run ci:check` - Runs linting and formatting checks
