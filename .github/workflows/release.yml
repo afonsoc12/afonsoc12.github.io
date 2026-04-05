@@ -1,9 +1,7 @@
-name: CI, Release, and Deploy
+name: Release and Deploy
 
 on:
   push:
-    branches:
-      - master
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
   workflow_dispatch:
@@ -18,29 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  ci:
-    permissions:
-      contents: read
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v6
-
-      - name: Setup Node
-        uses: actions/setup-node@v6
-        with:
-          node-version: "lts/*"
-          cache: "npm"
-
-      - name: Install dependencies
-        run: npm ci
-
-      - name: Lint, format, type, and build checks
-        run: npm run ci:check
-
   build:
-    if: startsWith(github.ref, 'refs/tags/v')
-    needs: ci
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.VERSION }}
@@ -64,7 +40,7 @@ jobs:
         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
           node-version: "lts/*"
           cache: "npm"
@@ -101,7 +77,6 @@ jobs:
           path: afonsocosta.dev-v${{ steps.version.outputs.VERSION }}.zip
 
   deploy:
-    if: startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
     environment:
@@ -113,7 +88,6 @@ jobs:
         uses: actions/deploy-pages@v5
 
   publish:
-    if: startsWith(github.ref, 'refs/tags/v')
     needs:
       - build
     runs-on: ubuntu-latest
@@ -124,7 +98,7 @@ jobs:
           name: release-archive
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-rielease@v2
         with:
           name: v${{ needs.build.outputs.version }}
           generate_release_notes: true
