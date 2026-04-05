@@ -27,13 +27,19 @@ import profileImage from "../assets/images/profile.png";
     />
     <slot name="head" />
     <!-- Google tag (gtag.js) -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-QKE8QXW8T8"></script>
+    <script
+      is:inline
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-QKE8QXW8T8"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        // eslint-disable-next-line prefer-rest-params
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'G-QKE8QXW8T8');
+      gtag("config", "G-QKE8QXW8T8");
     </script>
   </head>
   <body class="bg-gray-950 text-gray-100 antialiased">
