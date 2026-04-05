@@ -1,0 +1,69 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base title="404 — afonsocosta.dev" description="Page not found">
+  <div
+    class="flex h-screen flex-col items-center justify-center px-6 text-center font-mono"
+  >
+    <p class="eyebrow mb-2">exit code 404</p>
+    <h1 class="section-title mb-2">
+      Page not found<span class="animate-pulse text-cyan-400">_</span>
+    </h1>
+    <div
+      class="glass-card mb-8 max-w-md px-6 py-4 text-left text-sm leading-7 text-slate-400"
+    >
+      <p>
+        <span class="text-indigo-400">$</span>
+        <span class="text-green-400"> curl</span> afonsocosta.dev<span
+          class="text-slate-500">/this-page</span
+        >
+      </p>
+      <p class="text-red-400">curl: (404) Not Found</p>
+      <br />
+      <p>
+        <span class="text-indigo-400">$</span>
+        <span class="text-green-400"> grep</span> -r "this-page" ./site
+      </p>
+      <p class="text-slate-500"># no results. shocking.</p>
+      <br />
+      <p>
+        <span class="text-indigo-400">$</span>
+        <span class="text-green-400"> kubectl</span> get page this-page
+      </p>
+      <p class="text-red-400">Error: pages "this-page" not found</p>
+      <br />
+      <p>
+        <span class="text-indigo-400">$</span>
+        <span class="text-green-400"> sudo</span> find / -name "this-page" 2&gt;/dev/null
+      </p>
+      <p class="text-slate-500"># still nothing. it never existed.</p>
+      <br />
+      <p>
+        <span class="text-indigo-400">$</span>
+        <span class="text-amber-300"> echo</span> "maybe try the homepage?"
+      </p>
+      <p class="text-green-400">maybe try the homepage?</p>
+    </div>
+    <a
+      href="/"
+      class="flex items-center gap-2 rounded-lg border border-cyan-700/50 bg-cyan-900/20 px-5 py-2.5 text-sm font-medium text-cyan-300 transition-colors hover:bg-cyan-900/40 hover:text-cyan-200"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="14"
+        height="14"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M19 12H5M12 5l-7 7 7 7"></path>
+      </svg>
+       cd ~
+    </a>
+  </div>
+</Base>
+

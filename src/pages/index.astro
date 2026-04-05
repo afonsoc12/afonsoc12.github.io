@@ -6,6 +6,10 @@ import About from "../components/About.astro";
 import Experience from "../components/Experience.astro";
 import Projects from "../components/Projects.astro";
 import Contact from "../components/Contact.astro";
+import packageJson from "../../package.json";
+import profileImage from "../assets/images/profile.png";
+
+const version = packageJson.version;
 ---
 
 <Base title="Afonso Costa" description="Afonso Costa's Personal Website">
@@ -67,15 +71,16 @@ import Contact from "../components/Contact.astro";
           <div
             class="h-14 w-14 flex-shrink-0 overflow-hidden rounded-full border-2 border-cyan-800/50 bg-slate-800"
           >
-            <div
-              class="flex h-full w-full items-center justify-center bg-gradient-to-br from-cyan-900/70 to-slate-800 text-lg font-bold text-cyan-200"
-            >
-              AC
-            </div>
+            <img
+              src={profileImage.src}
+              alt="Afonso Costa"
+              class="h-full w-full object-cover"
+              loading="eager"
+            />
           </div>
           <div>
             <p class="text-sm font-semibold text-white">Afonso Costa</p>
-            <p class="text-xs text-cyan-300">Senior Data Platform Engineer</p>
+            <p class="text-xs text-cyan-300">Sr. Data Platform Engineer, MSc.</p>
           </div>
         </div>
         <!-- Social links -->
@@ -157,6 +162,14 @@ import Contact from "../components/Contact.astro";
             >Contact</a
           >
         </nav>
+        <a
+          href={`https://github.com/afonsoc12/afonsoc12.github.io/releases/tag/v${version}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-4 font-mono text-[11px] tracking-wide text-slate-500 transition-colors hover:text-cyan-300"
+        >
+          v{version}
+        </a>
       </div>
     </header>
 
@@ -192,24 +205,13 @@ import Contact from "../components/Contact.astro";
       });
     </script>
 
-    <main class="min-h-0 flex-1 snap-y snap-mandatory overflow-y-auto">
+    <main class="min-h-0 flex-1 snap-y snap-mandatory overflow-y-auto overscroll-y-contain">
       <TerminalHero />
 
       <About />
       <Experience />
       <Projects />
       <Contact />
-
-      <footer
-        class="border-t border-slate-800/90 px-6 py-8 text-center text-sm text-slate-400"
-      >
-        Made with 🤖 by <a
-          href="https://linkedin.com/in/afonsoc12"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="text-cyan-300 transition-colors hover:text-cyan-200">me</a
-        >
-      </footer>
     </main>
   </div>
 </Base>

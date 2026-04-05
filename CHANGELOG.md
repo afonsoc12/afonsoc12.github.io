@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.0.3] - 2026-04-05
+
+### Added
+
+- Custom 404 page
+
+### Fixed
+
+- Fix bug where terminal prompt would show when scrolling
+- Fix profile pic not showing in sidebar in mobile
+- Added version to navbar in mobile
+- Fix GA implementation
+
 ## [0.0.2] - 2026-04-05
 
 ### Added

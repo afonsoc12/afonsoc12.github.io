@@ -1,6 +1,6 @@
 <section
   id="hero"
-  class="terminal-hero flex h-full snap-start flex-col bg-gray-950 font-mono"
+  class="terminal-hero flex h-full snap-start flex-col overflow-hidden bg-gray-950 font-mono"
 >
   <!-- macOS title bar -->
   <div
@@ -179,46 +179,15 @@
     input.focus();
   });
 
-  // Keep prompt above mobile keyboard using fixed positioning
-  const inputRow = document.getElementById(
-    "terminal-input-row",
-  ) as HTMLDivElement;
-
-  function fixInputRow() {
-    if (window.innerWidth >= 1024 || !window.visualViewport) return;
-    const vv = window.visualViewport;
-    inputRow.style.position = "fixed";
-    inputRow.style.top = `${vv.offsetTop + vv.height - inputRow.offsetHeight}px`;
-    inputRow.style.left = "0";
-    inputRow.style.right = "0";
-    inputRow.style.zIndex = "60";
-    output.style.paddingBottom = `${inputRow.offsetHeight}px`;
-  }
-
-  function unfixInputRow() {
-    inputRow.style.position = "";
-    inputRow.style.top = "";
-    inputRow.style.left = "";
-    inputRow.style.right = "";
-    inputRow.style.zIndex = "";
-    output.style.paddingBottom = "";
-  }
-
-  input.addEventListener("focus", () => {
-    if (window.innerWidth < 1024) {
-      fixInputRow();
-      if (window.visualViewport) {
-        window.visualViewport.addEventListener("resize", fixInputRow);
-        window.visualViewport.addEventListener("scroll", fixInputRow);
+  // Blur input and unfix row when hero scrolls out of view
+  const scrollContainer = document.querySelector("main");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      if (!entries[0].isIntersecting) {
+        input.blur();
       }
-    }
-  });
-
-  input.addEventListener("blur", () => {
-    unfixInputRow();
-    if (window.visualViewport) {
-      window.visualViewport.removeEventListener("resize", fixInputRow);
-      window.visualViewport.removeEventListener("scroll", fixInputRow);
-    }
-  });
+    },
+    { root: scrollContainer, threshold: 0.1 },
+  );
+  observer.observe(terminal);
 </script>
