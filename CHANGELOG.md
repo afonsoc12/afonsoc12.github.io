@@ -5,6 +5,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.0.6] - 2026-04-05
+
+### Added
+
+- Health endpoint at `/healthz`
+
 ## [0.0.5] - 2026-04-05
 
 ### Changed
