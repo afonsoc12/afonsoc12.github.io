@@ -4,12 +4,10 @@ interface Props {
   description?: string;
 }
 
-const {
-  title = 'Portfolio',
-  description = 'Personal website',
-} = Astro.props;
+const { title = "Portfolio", description = "Personal website" } = Astro.props;
 
-import '../styles/global.css';
+import "../styles/global.css";
+import profileImage from "../assets/images/profile.png";
 ---
 
 <!doctype html>
@@ -19,6 +17,8 @@ import '../styles/global.css';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    <link rel="icon" type="image/png" href={profileImage.src} />
+    <link rel="apple-touch-icon" href={profileImage.src} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -26,6 +26,14 @@ import '../styles/global.css';
       rel="stylesheet"
     />
     <slot name="head" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKE8QXW8T8"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-QKE8QXW8T8');
+    </script>
   </head>
   <body class="bg-gray-950 text-gray-100 antialiased">
     <slot />
@@ -50,8 +58,16 @@ import '../styles/global.css';
   body {
     font-family: "Space Grotesk", sans-serif;
     background:
-      radial-gradient(1200px 700px at 100% -20%, rgba(34, 211, 238, 0.18), transparent 55%),
-      radial-gradient(900px 500px at -20% 40%, rgba(245, 158, 11, 0.12), transparent 55%),
+      radial-gradient(
+        1200px 700px at 100% -20%,
+        rgba(34, 211, 238, 0.18),
+        transparent 55%
+      ),
+      radial-gradient(
+        900px 500px at -20% 40%,
+        rgba(245, 158, 11, 0.12),
+        transparent 55%
+      ),
       var(--bg);
     color: var(--text);
   }
@@ -97,7 +113,11 @@ import '../styles/global.css';
   }
 
   .glass-card {
-    background: linear-gradient(145deg, rgba(17, 24, 39, 0.78), rgba(2, 6, 23, 0.8));
+    background: linear-gradient(
+      145deg,
+      rgba(17, 24, 39, 0.78),
+      rgba(2, 6, 23, 0.8)
+    );
     border: 1px solid rgba(148, 163, 184, 0.18);
     border-radius: 1rem;
     backdrop-filter: blur(8px);

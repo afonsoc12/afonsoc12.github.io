@@ -61,34 +61,45 @@ const roles: Role[] = [
 ];
 ---
 
-<section id="experience" class="section-shell fade-up snap-start snap-always lg:min-h-screen">
+<section
+  id="experience"
+  class="section-shell fade-up snap-start h-full overflow-y-auto"
+>
   <p class="eyebrow">Career</p>
   <h2 class="section-title">Experience</h2>
   <p class="section-intro mb-10 max-w-none">
-    Roles focused on building reliable Data Platforms and helping teams ship with confidence.
+    Roles focused on building reliable Data Platforms and helping teams ship
+    with confidence.
   </p>
 
   <div class="relative">
-    <div class="absolute left-[-16px] top-2 bottom-2 w-px bg-slate-700/70"></div>
+    <div class="absolute top-2 bottom-2 left-2 w-px bg-slate-700/70">
+    </div>
     {
-      roles.map((role, index) => (
+      roles.map((role) => (
         <article class="relative pb-8 last:pb-0">
-          <span class="absolute left-[-23px] top-2 block w-4 h-4 rounded-full border-2 border-cyan-300 bg-slate-950"></span>
-          <div class="glass-card p-5">
-            <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2 mb-1">
-              <span class="font-semibold text-white text-lg">{role.title}</span>
-              <span class="text-sm text-slate-400 whitespace-nowrap">{role.period}</span>
+          <span class="absolute top-2 left-0 block h-4 w-4 rounded-full border-2 border-cyan-300 bg-slate-950" />
+          <div class="glass-card p-5 ml-6">
+            <div class="mb-1 flex flex-wrap items-baseline justify-between gap-x-4 gap-y-2">
+              <span class="text-lg font-semibold text-white">{role.title}</span>
+              <span class="text-sm whitespace-nowrap text-slate-400">
+                {role.period}
+              </span>
             </div>
-            <p class="text-cyan-200 text-sm mb-3">{role.company}</p>
-            {role.summary && <p class="text-slate-200 text-sm leading-relaxed mb-3">{role.summary}</p>}
+            <p class="mb-3 text-sm text-cyan-200">{role.company}</p>
+            {role.summary && (
+              <p class="mb-3 text-sm leading-relaxed text-slate-200">
+                {role.summary}
+              </p>
+            )}
             {role.milestones && (
               <div class="mb-4 px-1 py-1">
                 <div class="relative pl-4">
-                  <div class="absolute left-0 top-2 bottom-2 w-px bg-slate-600/70"></div>
+                  <div class="absolute top-2 bottom-2 left-0 w-px bg-slate-600/70" />
                   <div class="space-y-3">
                     {role.milestones.map((milestone) => (
                       <div class="relative pl-4">
-                        <span class="absolute -left-[4px] top-1.5 block h-2 w-2 rounded-full bg-cyan-300"></span>
+                        <span class="absolute top-1.5 -left-[4px] block h-2 w-2 rounded-full bg-cyan-300" />
                         <p class="text-sm text-slate-100">{milestone.title}</p>
                         <p class="text-xs text-slate-400">{milestone.period}</p>
                       </div>
@@ -98,10 +109,10 @@ const roles: Role[] = [
               </div>
             )}
             {role.highlights.length > 0 && (
-              <ul class="text-sm text-slate-300 space-y-2">
+              <ul class="space-y-2 text-sm text-slate-300">
                 {role.highlights.map((highlight) => (
                   <li class="flex items-start gap-2">
-                    <span class="text-amber-300 mt-1">•</span>
+                    <span class="mt-1 text-amber-300">•</span>
                     <span>{highlight}</span>
                   </li>
                 ))}
