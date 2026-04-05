@@ -30,7 +30,7 @@ import profileImage from "../assets/images/profile.png";
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-QKE8QXW8T8"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      function gtag(...args: unknown[]){dataLayer.push(args);}
       gtag('js', new Date());
       gtag('config', 'G-QKE8QXW8T8');
     </script>
