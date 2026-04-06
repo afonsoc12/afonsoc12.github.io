@@ -19,17 +19,15 @@ const versionLabel = import.meta.env.DEV
 ---
 
 <Base title="Afonso Costa" description="Afonso Costa's Personal Website">
-  <!-- Fixed left sidebar (hidden on mobile, shown lg+) -->
   <Sidebar />
 
   <!-- Flex column wrapper: header sits outside the snap scroll container -->
-  <div class="flex h-dvh flex-col lg:ml-72">
+  <div id="app-shell" class="fixed inset-0 flex flex-col lg:left-72">
     <!-- Mobile header — only visible below lg -->
     <header
       class="z-50 flex-shrink-0 border-b border-slate-800/90 bg-slate-950/95 backdrop-blur-sm lg:hidden"
     >
       <div class="flex items-center px-6 py-4">
-        <!-- Hamburger button (left side) -->
         <button
           id="mobile-menu-toggle"
           aria-label="Toggle navigation menu"
@@ -72,7 +70,6 @@ const versionLabel = import.meta.env.DEV
         id="mobile-nav"
         class="hidden border-t border-slate-800/90 px-6 py-5"
       >
-        <!-- Profile -->
         <div class="mb-4 flex items-center gap-4">
           <div
             class="h-14 w-14 flex-shrink-0 overflow-hidden rounded-full border-2 border-cyan-800/50 bg-slate-800"
@@ -91,7 +88,6 @@ const versionLabel = import.meta.env.DEV
             </p>
           </div>
         </div>
-        <!-- Social links -->
         <div class="mb-5 flex gap-5">
           <a
             href="https://github.com/afonsoc12"
@@ -142,7 +138,6 @@ const versionLabel = import.meta.env.DEV
             LinkedIn
           </a>
         </div>
-        <!-- Section nav -->
         <nav class="flex flex-col gap-1 border-t border-slate-800/90 pt-4">
           <a
             href="#hero"
@@ -187,13 +182,19 @@ const versionLabel = import.meta.env.DEV
       const hamburgerIcon = document.getElementById("hamburger-icon");
       const closeIcon = document.getElementById("close-icon");
 
-      toggle?.addEventListener("click", () => {
+      function closeNav() {
+        if (nav?.classList.contains("hidden")) return;
+        nav?.classList.add("hidden");
+        hamburgerIcon?.classList.remove("hidden");
+        closeIcon?.classList.add("hidden");
+        toggle?.setAttribute("aria-expanded", "false");
+      }
+
+      toggle?.addEventListener("click", (e) => {
+        e.stopPropagation();
         const isOpen = !nav?.classList.contains("hidden");
         if (isOpen) {
-          nav?.classList.add("hidden");
-          hamburgerIcon?.classList.remove("hidden");
-          closeIcon?.classList.add("hidden");
-          toggle.setAttribute("aria-expanded", "false");
+          closeNav();
         } else {
           nav?.classList.remove("hidden");
           hamburgerIcon?.classList.add("hidden");
@@ -202,18 +203,23 @@ const versionLabel = import.meta.env.DEV
         }
       });
 
+      document.addEventListener("click", (e) => {
+        if (
+          !nav?.classList.contains("hidden") &&
+          !nav?.contains(e.target as Node)
+        ) {
+          closeNav();
+        }
+      });
+
       // Close nav when a link is clicked (anchor navigation)
       document.querySelectorAll(".mobile-nav-link").forEach((link) => {
-        link.addEventListener("click", () => {
-          nav?.classList.add("hidden");
-          hamburgerIcon?.classList.remove("hidden");
-          closeIcon?.classList.add("hidden");
-          toggle?.setAttribute("aria-expanded", "false");
-        });
+        link.addEventListener("click", closeNav);
       });
     </script>
 
     <main
+      id="main-scroll"
       class="min-h-0 flex-1 snap-y snap-mandatory overflow-y-auto overscroll-y-contain"
     >
       <TerminalHero />
@@ -224,4 +230,20 @@ const versionLabel = import.meta.env.DEV
       <Contact />
     </main>
   </div>
+
+  <script>
+    // iOS Safari: the visual viewport shifts upward when the keyboard opens,
+    // even on position:fixed elements. Repin the shell to the visual viewport.
+    const shell = document.getElementById("app-shell") as HTMLElement | null;
+    function pinToVisualViewport() {
+      const vv = window.visualViewport;
+      if (!vv || !shell) return;
+      shell.style.top = `${vv.offsetTop}px`;
+      shell.style.height = `${vv.height}px`;
+    }
+    if (window.visualViewport) {
+      window.visualViewport.addEventListener("resize", pinToVisualViewport);
+      window.visualViewport.addEventListener("scroll", pinToVisualViewport);
+    }
+  </script>
 </Base>

@@ -14,7 +14,10 @@ import profileImage from "../assets/images/profile.png";
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, interactive-widget=resizes-content"
+    />
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="icon" type="image/png" href={profileImage.src} />
@@ -58,8 +61,9 @@ import profileImage from "../assets/images/profile.png";
     --accent-2: #f59e0b;
   }
 
-  html {
-    scroll-behavior: smooth;
+  html,
+  body {
+    overflow: hidden;
   }
 
   body {
@@ -94,6 +98,7 @@ import profileImage from "../assets/images/profile.png";
   @media (max-width: 640px) {
     .section-shell {
       padding-inline: 1.9rem;
+      padding-block: 3.5rem;
     }
   }
 

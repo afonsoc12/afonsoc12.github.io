@@ -5,6 +5,21 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.1.1] - 2026-04-06
+
+### Fixed
+
+- Mobile scroll now works across the full screen; sections no longer create inner scroll containers
+- iOS keyboard no longer pushes the header off-screen (fixed shell + Visual Viewport API)
+- Contact form no longer zooms on mobile when focused (16px font on inputs)
+- Hamburger menu closes on tap outside or nav link click
+
+### Changed
+
+- Contact divider text updated to "or find me on"
+- Reduced section vertical padding on mobile
+- Removed dead CSS and redundant HTML comments
+
 ## [0.1.0] - 2026-04-05
 
 ### Added
