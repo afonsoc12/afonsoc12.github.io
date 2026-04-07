@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog],
 and this project adheres to [Semantic Versioning].
 
+## [0.2.0] - 2026-04-06
+
+### Added
+
+- Scroll navigation cues: animated double-chevron on terminal hero and all inner sections, with back to top button at the end
+
+### Fixed
+
+- Tapping the profile photo in the mobile nav now navigates to the root
+
+### Changed
+
+- Removed border above the "Made with 🤖" footer in Contact
+
 ## [0.1.1] - 2026-04-06
 
 ### Fixed
@@ -82,5 +96,12 @@ and this project adheres to [Semantic Versioning].
 
 <!-- Versions -->
 
-[unreleased]: https://github.com/Author/afonsoc12.github.io/compare/v0.0.2...HEAD
+[unreleased]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.2.0...HEAD
+[0.2.0]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.1.1...v0.2.0
+[0.1.1]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.1.0...v0.1.1
+[0.1.0]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.0.5...v0.1.0
+[0.0.5]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.0.4...v0.0.5
+[0.0.4]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.0.3...v0.0.4
+[0.0.3]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.0.2...v0.0.3
+[0.0.2]: https://github.com/afonsoc12/afonsoc12.github.io/compare/v0.0.1...v0.0.2
 [0.0.1]: https://github.com/afonsoc12/afonsoc12.github.io/releases/tag/v0.0.1
