@@ -364,7 +364,7 @@ const versionLabel = import.meta.env.DEV
           updateDots(id);
         }
       },
-      { root: mainEl, threshold: 0.5 },
+      { root: mainEl, threshold: 0, rootMargin: "-40% 0px -50% 0px" },
     );
 
     sectionEls.forEach((el) => el && observer.observe(el));

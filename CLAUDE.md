@@ -32,4 +32,5 @@ This repository is a personal site built with Astro + Tailwind.
 
 - Always add entries under `## [Unreleased]` in `CHANGELOG.md`
 - Follow [Keep a Changelog](https://keepachangelog.com) spec: use `Added`, `Changed`, `Deprecated`, `Removed`, `Fixed`, `Security` subsections
+- Try to keep changes succint and to the point. If they are related, prefer a single entry
 - Never write directly to a versioned section; releases auto-promote Unreleased
