@@ -20,6 +20,7 @@ const projects: Project[] = [
     description: "GitOps-driven homelab. Self-hosted. Automated. Encrypted.",
     tags: ["Kubernetes", "Ansible", "Terraform", "homelab", "ArgoCD"],
     github: "https://github.com/afonsoc12/homelab",
+    demo: "https://afonsocosta.dev/homelab/",
   },
   {
     title: "Ready, Set, Develop™",
@@ -104,9 +105,24 @@ const projects: Project[] = [
                 href={p.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="font-medium text-cyan-300 transition-colors hover:text-cyan-200"
+                class="flex items-center gap-2 font-medium text-cyan-300 transition-colors hover:text-cyan-200"
               >
-                Demo
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M10 2v8l3-3 3 3V2" />
+                  <path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20" />
+                  <path d="M20 22V4a2 2 0 0 0-2-2H6.5A2.5 2.5 0 0 0 4 4.5v15A2.5 2.5 0 0 0 6.5 22H20z" />
+                </svg>
+                Docs
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="13"

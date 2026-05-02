@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
+## [0.2.3] - 2026-05-03
+
+### Changed
+
+- Added documentation link to homelab project card with book-marked icon
+
 ## [0.2.2] - 2026-05-02
 
 ### Changed
