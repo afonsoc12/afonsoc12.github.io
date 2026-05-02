@@ -7,18 +7,20 @@ and this project adheres to [Semantic Versioning].
 
 ## [Unreleased]
 
-## [0.2.1] - 2026-05-02
+## [0.2.2] - 2026-05-02
 
 ### Changed
 
+- Updated all project descriptions and tags to match GitHub repo About text
 - Replaced Octo Usage project with OctoTrack (new repo, Streamlit dashboard)
-- Updated Homelab project description to reflect the GitOps-driven setup
+
+## [0.2.1] - 2026-04-07
 
 ### Fixed
 
 - Progress cues not advancing for long sections on mobile
 
-## [0.2.0] - 2026-04-06
+## [0.2.0] - 2026-04-07
 
 ### Added
 
