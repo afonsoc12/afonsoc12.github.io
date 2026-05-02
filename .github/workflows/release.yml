@@ -1,4 +1,4 @@
-name: Release and Deploy
+name: 🚀 Release and Deploy
 
 on:
   push:
@@ -17,24 +17,25 @@ concurrency:
 
 jobs:
   build:
+    name: 🏗️ Build
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.version.outputs.VERSION }}
     steps:
-      - name: Checkout
+      - name: 📥 Checkout
         uses: actions/checkout@v6
 
-      - name: Extract version from tag
+      - name: 🏷️ Extract version from tag
         id: version
         run: echo "VERSION=${GITHUB_REF_NAME#v}" >> $GITHUB_OUTPUT
 
-      - name: Setup Node
+      - name: 🟢 Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
           cache: "npm"
 
-      - name: Ensure tag matches package version
+      - name: 🔍 Ensure tag matches package version
         run: |
           TAG_VERSION="${{ steps.version.outputs.VERSION }}"
           PACKAGE_VERSION=$(node -p "require('./package.json').version")
@@ -45,49 +46,61 @@ jobs:
             exit 1
           fi
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Build
+      - name: 🔨 Build
         run: npm run build
 
-      - name: Upload GitHub Pages artifact
-        uses: actions/upload-pages-artifact@v5
+      - name: ⬆️ Upload GitHub Pages artifact
+        uses: actions/upload-pages-artifact@v4
         with:
           path: dist
 
-      - name: Archive dist
+      - name: 🗜️ Archive dist
         run: zip -r afonsocosta.dev-v${{ steps.version.outputs.VERSION }}.zip dist/
 
-      - name: Upload release archive
+      - name: ⬆️ Upload release archive
         uses: actions/upload-artifact@v7
         with:
           name: release-archive
           path: afonsocosta.dev-v${{ steps.version.outputs.VERSION }}.zip
 
   deploy:
+    name: 🌐 Deploy to GitHub Pages
     needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v5
 
   publish:
+    name: 📦 GitHub Release
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - name: Download release archive
+      - name: 📥 Checkout
+        uses: actions/checkout@v6
+
+      - name: 📖 Extract changelog notes
+        id: changelog
+        uses: release-flow/keep-a-changelog-action@v3
+        with:
+          command: query
+          version: ${{ startsWith(github.ref, 'refs/tags/v') && 'latest' || 'unreleased' }}
+
+      - name: ⬇️ Download release archive
         uses: actions/download-artifact@v8
         with:
           name: release-archive
 
-      - name: Create GitHub Release
+      - name: 🚀 Create GitHub release
         uses: softprops/action-gh-release@v3
         with:
           name: v${{ needs.build.outputs.version }}
-          generate_release_notes: true
+          body: ${{ steps.changelog.outputs.release-notes }}
           files: afonsocosta.dev-v${{ needs.build.outputs.version }}.zip
