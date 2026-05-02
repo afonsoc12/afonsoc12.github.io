@@ -1,4 +1,4 @@
-name: CI
+name: 🔍 CI
 
 on:
   push:
@@ -10,21 +10,22 @@ on:
 
 jobs:
   ci:
+    name: 🔍 Lint, Format, Type & Build
     permissions:
       contents: read
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 📥 Checkout
         uses: actions/checkout@v6
 
-      - name: Setup Node
+      - name: 🟢 Setup Node
         uses: actions/setup-node@v6
         with:
           node-version: "lts/*"
           cache: "npm"
 
-      - name: Install dependencies
+      - name: 📦 Install dependencies
         run: npm ci
 
-      - name: Lint, format, type, and build checks
+      - name: 🔍 Lint, format, type, and build checks
         run: npm run ci:check
