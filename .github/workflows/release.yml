@@ -28,7 +28,7 @@ jobs:
       version: ${{ steps.version.outputs.VERSION }}
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: 🏷️ Extract version from tag
         id: version
@@ -89,7 +89,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 📥 Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: 📖 Extract changelog notes
         id: changelog
